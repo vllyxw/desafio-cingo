@@ -1,7 +1,7 @@
 package cingo.rest;
 
+import cingo.model.Log;
 import cingo.service.LogService;
-import org.hibernate.annotations.common.util.impl.Log;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,12 +11,11 @@ import java.util.List;
 @Path("/logs")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-
 public class LogResource {
     private LogService logService = new LogService();
 
     @GET
-    public Response listLog(){
+    public Response listLog() {
         List<Log> logs = logService.listLog();
         return Response.ok(logs).build();
     }
@@ -29,7 +28,7 @@ public class LogResource {
 
     @PUT
     @Path("/{id}")
-    public Response updateLog(@PathParam("id") Long id, Long log) {
+    public Response updateLog(@PathParam("id") Long id, Log log) {
         logService.updateLog(id, log);
         return Response.ok(log).build();
     }
@@ -40,5 +39,4 @@ public class LogResource {
         logService.deleteLog(id);
         return Response.noContent().build();
     }
-
 }

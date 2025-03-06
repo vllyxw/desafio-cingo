@@ -2,8 +2,6 @@ package cingo.service;
 
 import cingo.model.Log;
 import cingo.dao.LogDAO;
-import cingo.rest.LogResource;
-
 import java.util.List;
 
 public class LogService {
@@ -17,21 +15,19 @@ public class LogService {
         logDAO.saveOrUpdate(log);
     }
 
-    public void updateLog(Long id, Log log) {
-        Log existente = logDAO.searchId(Id);
-        if (existente != null) {
-            existente.setConteudo(log.getConteudo());
-            existente.setVezes(log.getVezes());
-            logDAO.saveOrUpdate();
+    public void updateLog(Long id, Log logToUpdate) {
+        Log existente = logDAO.searchId(id);
+        if (existente != null && logToUpdate != null) {
+            existente.setConteudo(logToUpdate.getConteudo());
+            existente.setVezes(logToUpdate.getVezes());
+            logDAO.saveOrUpdate(existente);
         }
     }
 
-    public  void deleteLog(Long id){
+    public void deleteLog(Long id) {
         Log log = logDAO.searchId(id);
         if (log != null) {
             logDAO.delete(log);
         }
     }
-
-
 }
