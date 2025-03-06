@@ -41,4 +41,8 @@ public class LogDAO {
         return logs;
     }
 
+    public Log searchId(Long id) {
+
+    }
+
 }

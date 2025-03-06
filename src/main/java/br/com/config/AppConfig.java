@@ -1,2 +1,4 @@
-package config;public class AppConfig {
+package config;
+
+public class AppConfig {
 }
