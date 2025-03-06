@@ -3,7 +3,10 @@ package cingo.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.NoArgsConstructor;
+
+@Getter
+@Setter
+
 
 @Entity
 @Table(name = "log")
@@ -18,7 +21,7 @@ public class Log {
     @Column(name = "vezes", nullable = false)
     private Long vezes;
 
-    public Log(){
+    public Log() {
     }
 
     public Long getId() {
