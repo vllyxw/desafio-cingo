@@ -42,7 +42,32 @@ public class LogDAO {
     }
 
     public Log searchId(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Log log = session.get(Log.class, id);
+        session.close();
+        return log;
+    }
 
+    public List<Log> listAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Log> logs = session.createQuery("FROM Log", Log.class).list();
+        session.close();
+        return logs;
+    }
+
+    public void delete(Log log) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+
+        try {
+            session.delete(log);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
 }

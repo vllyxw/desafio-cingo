@@ -18,7 +18,7 @@ public class LogService {
     }
 
     public void updateLog(Long id, Log log) {
-        Log existente = logDAO.searchId(Id);
+        Log existente = logDAO.searchId(id);
         if (existente != null) {
             existente.setConteudo(log.getConteudo());
             existente.setVezes(log.getVezes());

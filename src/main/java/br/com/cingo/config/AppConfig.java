@@ -1,4 +1,4 @@
-package config;
+package cingo.config;
 
 public class AppConfig {
 }
