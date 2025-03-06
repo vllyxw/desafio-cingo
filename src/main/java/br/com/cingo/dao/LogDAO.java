@@ -1,5 +1,6 @@
-package cingo.model;
+package cingo.dao;
 
+import cingo.model.Log;
 import cingo.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
