@@ -1,5 +1,6 @@
-package cingo.model;
+package cingo.dao;
 
+import cingo.model.Log;
 import cingo.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,10 +34,15 @@ public class LogDAO {
         session.close();
     }
 
-    public List<Log> logList() {
+    public List<Log> listLog() {
         Session session = sessionFactory.openSession();
         List<Log> logs = session.createQuery("FROM Log ORDER BY vezes DESC", Log.class).list();
         session.close();
         return logs;
     }
+
+    public Log searchId(Long id) {
+
+    }
+
 }
