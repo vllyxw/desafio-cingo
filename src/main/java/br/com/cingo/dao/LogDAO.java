@@ -33,10 +33,11 @@ public class LogDAO {
         session.close();
     }
 
-    public List<Log> logList() {
+    public List<Log> listLog() {
         Session session = sessionFactory.openSession();
         List<Log> logs = session.createQuery("FROM Log ORDER BY vezes DESC", Log.class).list();
         session.close();
         return logs;
     }
+
 }
