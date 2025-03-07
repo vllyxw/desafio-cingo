@@ -1,0 +1,7 @@
+cingo\rest\LogResource.class
+cingo\rest\CORSFilter.class
+cingo\util\HibernateUtil.class
+cingo\model\Log.class
+cingo\dao\LogDAO.class
+cingo\config\AppConfig.class
+cingo\service\LogService.class
