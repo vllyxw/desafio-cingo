@@ -12,7 +12,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LogResource {
-    private LogService logService = new LogService();
+    private final LogService logService = new LogService();
 
     @GET
     public Response listLog() {
@@ -29,8 +29,11 @@ public class LogResource {
     @PUT
     @Path("/{id}")
     public Response updateLog(@PathParam("id") Long id, Log log) {
-        logService.updateLog(id, log);
-        return Response.ok(log).build();
+        Log existente = logService.updateLog(id, log);
+        if (existente == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Log não encontrado").build();
+        }
+        return Response.ok(existente).build();
     }
 
     @DELETE
@@ -39,4 +42,22 @@ public class LogResource {
         logService.deleteLog(id);
         return Response.noContent().build();
     }
+
+    @OPTIONS
+    @Path("/logs")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response corsPreflight() {
+        return Response.ok()
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+                .header("Access-Control-Allow-Headers", "Content-Type")
+                .build();
+    }
+
+    @GET
+    @Path("/teste")
+    public Response teste() {
+        return Response.ok("Funcionando!").build();
+    }
+
 }

@@ -15,13 +15,14 @@ public class LogService {
         logDAO.saveOrUpdate(log);
     }
 
-    public void updateLog(Long id, Log logToUpdate) {
+    public Log updateLog(Long id, Log logToUpdate) {
         Log existente = logDAO.searchId(id);
         if (existente != null && logToUpdate != null) {
             existente.setConteudo(logToUpdate.getConteudo());
             existente.setVezes(logToUpdate.getVezes());
             logDAO.saveOrUpdate(existente);
         }
+        return existente;
     }
 
     public void deleteLog(Long id) {

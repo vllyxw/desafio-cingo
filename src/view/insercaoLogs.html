@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Log</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Inserir Log</h2>
+    <form id="logForm">
+        <div class="form-group">
+            <label for="conteudo">Conteúdo</label>
+            <input type="text" class="form-control" id="conteudo" required>
+        </div>
+        <div class="form-group">
+            <label for="vezes">Vezes</label>
+            <input type="number" class="form-control" id="vezes" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#logForm').submit(function(event) {
+       event.preventDefault();
+       let conteudo = $('#conteudo').val();
+       let vezes = $('#vezes').val();
+
+       $.ajax({
+           url: "http://localhost:8082/desafio-cingo/api/logs",
+           type: "POST",
+           contentType: "application/json",
+           data: JSON.stringify({ conteudo, vezes }),
+           success: function() {
+               alert('Log salvo!');
+               window.location.href = "/logs";
+           },
+           error: function(xhr, status, error) {
+               alert('Erro ao salvar log: ' + error);
+           }
+       });
+   });
+</script>
+
+</body>
+</html>
