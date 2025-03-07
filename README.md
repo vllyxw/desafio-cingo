@@ -15,7 +15,7 @@ Nesta aplicação se trata ao ler o contéudo do log enviado em anexo ao desafio
 
 <h2>Como buildar este projeto</h2>
 
-1 - Baixe os arquivos maven e tomcat que está na ./assets 
+1 - Baixe os arquivos maven e ngrok que está na ./assets e o tomcat neste link: https://drive.google.com/file/d/19hFBiXaLwEK4BysafjENvPekfDfknpZb/view?usp=sharing
 
 2 - Logo apoós baixar, adicione cada aplicativo em pasta própria em Program Files. Ex.: C:/Program Files/Maven
 
